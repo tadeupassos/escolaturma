@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ titulo }} Escola</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="fechar()">
+        Fechar
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="fGroup" class="ion-padding ion-margin">
+
+    <ion-row>
+      <ion-col>
+        <ion-text><h5>Nome da Escola <ion-text color="danger">*</ion-text></h5></ion-text>
+        <ion-input type="text" formControlName="nomeEscola" class="campo"></ion-input>
+        <div class="mensagemValidacao" *ngIf="fGroup.controls.nomeEscola.errors">
+          <span *ngIf="fGroup.controls.nomeEscola.errors.required && fGroup.controls.nomeEscola.touched">Esse campo é obrigatório</span>
+        </div>        
+      </ion-col>      
+    </ion-row>   
+    
+    <ion-row>
+      <ion-col>
+        <ion-text><h5>Descrição <ion-text color="danger">*</ion-text></h5></ion-text>
+        <ion-input type="text" formControlName="descricao" class="campo"></ion-input>
+        <div class="mensagemValidacao" *ngIf="fGroup.controls.descricao.errors">
+          <span *ngIf="fGroup.controls.descricao.errors.required && fGroup.controls.descricao.touched">Esse campo é obrigatório</span>
+        </div>        
+      </ion-col>      
+    </ion-row>  
+  </form>
+  <ion-button class="ion-padding ion-margin" expand="full" (click)="gravar()" [disabled]="!fGroup.valid">
+    Gravar
+  </ion-button>
+</ion-content>

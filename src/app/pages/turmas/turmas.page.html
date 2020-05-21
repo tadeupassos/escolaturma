@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Turmas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab (click)="cadastrarTurma()" horizontal="start" vertical="bottom" slot="fixed">
+    <ion-fab-button color="success" ion-fab>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> 
+
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let t of turmas" size="auto">
+        <ion-card button (click)="editarTurma(t.id)">
+          <ion-title>
+            <h4><strong>Turma: </strong>{{ t.nomeTurma }}</h4>
+            <h5><strong>Descrição:  </strong> {{ t.descricao }}</h5>
+            <h5><strong>Escola:  </strong> {{ t.nomeEscola }}</h5>
+          </ion-title>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>   
+
+</ion-content>

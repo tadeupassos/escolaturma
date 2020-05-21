@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ titulo }} Turma</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="fechar()">
+        Fechar
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="fGroup" class="ion-padding ion-margin">
+
+    <ion-row>
+      <ion-col>
+        <ion-text><h5>Nome da Turma <ion-text color="danger">*</ion-text></h5></ion-text>
+        <ion-input type="text" formControlName="nomeTurma" class="campo"></ion-input>
+        <div class="mensagemValidacao" *ngIf="fGroup.controls.nomeTurma.errors">
+          <span *ngIf="fGroup.controls.nomeTurma.errors.required && fGroup.controls.nomeTurma.touched">Esse campo é obrigatório</span>
+        </div>        
+      </ion-col>      
+    </ion-row>   
+    
+    <ion-row>
+      <ion-col>
+        <ion-text><h5>Descrição <ion-text color="danger">*</ion-text></h5></ion-text>
+        <ion-input type="text" formControlName="descricao" class="campo"></ion-input>
+        <div class="mensagemValidacao" *ngIf="fGroup.controls.descricao.errors">
+          <span *ngIf="fGroup.controls.descricao.errors.required && fGroup.controls.descricao.touched">Esse campo é obrigatório</span>
+        </div>        
+      </ion-col>      
+    </ion-row>
+    
+    <ion-row>    
+      <ion-col>
+        <ion-text><h5>Escola <ion-text color="danger">*</ion-text></h5></ion-text>
+        <select formControlName="nomeEscola" class="campo">
+          <option *ngFor="let e of escolas" [value]="e.nomeEscola" selected>{{ e.nomeEscola }}</option>
+        </select>
+        <div class="mensagemValidacao" *ngIf="fGroup.controls.nomeEscola.errors">
+          <span *ngIf="fGroup.controls.nomeEscola.errors.required && fGroup.controls.nomeEscola.touched">Esse campo é obrigatório</span>
+        </div>                
+      </ion-col>                
+    </ion-row>  
+
+  </form>
+  <ion-button class="ion-padding ion-margin" expand="full" (click)="gravar()" [disabled]="!fGroup.valid">
+    Gravar
+  </ion-button>
+</ion-content>

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Escolas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab (click)="cadastrarEscola()" horizontal="start" vertical="bottom" slot="fixed">
+    <ion-fab-button color="success" ion-fab>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> 
+
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let e of escolas" size="auto">
+        <ion-card button (click)="editarEscola(e.id)">
+          <ion-title>
+            <h4><strong>Escola: </strong>{{ e.nomeEscola }}</h4>
+            <h5><strong>Descrição:  </strong> {{ e.descricao }}</h5>
+          </ion-title>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>   
+</ion-content>
